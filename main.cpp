@@ -18,6 +18,7 @@ bool checkCondition(path currentPath, int * inventoryMax, int * currentInventory
         if(inventoryMax[i] - currentInventory[i] >= 0)
         {
             quantityToShip+= inventoryMax[i] - currentInventory[i];
+            shipments[i] = inventoryMax[i] - currentInventory[i];
         }
         else
         {
@@ -60,14 +61,11 @@ bool checkCondition(path currentPath, int * inventoryMax, int * currentInventory
 
         }
     }
-
     if (quantityToShip > capacityVehicle)
     {
         /// constraint 6
         return false;
     }
-
-
 }
 
 vector<int> getNeighbours(path current, int number_retailer, int ** matrice)
@@ -75,7 +73,11 @@ vector<int> getNeighbours(path current, int number_retailer, int ** matrice)
     vector<int> neighbours;
     for (int i=0;i< number_retailer ; i++)
     {
-        neighbours.push_back(matrice[current.visited_node[current.visited_node.size()-1]][i]);
+        if (matrice[current.visited_node[current.visited_node.size()-1]][i] != INT8_MAX)
+        {
+            neighbours.push_back(i);
+            cout << i << endl;
+        }
     }
     return neighbours;
 }
@@ -123,44 +125,58 @@ path recursiveFunction (path currentPath, int **  matrice, int * inventoryMax, i
 
 }
 
-int creerInitialCondition (int ** MatriceAdjacence, int * inventoryMax, int * currentInventory, int * increaseSpeed)
+void creerInitialCondition (int ** MatriceAdjacence, int * inventoryMax, int * increaseSpeed, int * currentInventory)
 {
-
 
     MatriceAdjacence[0][0] = INT8_MAX;
     MatriceAdjacence[0][1] = 100;
     MatriceAdjacence[0][2] = 100;
     MatriceAdjacence[0][3] = 100;
+    MatriceAdjacence[0][4] = 100;
+
     MatriceAdjacence[1][0] = 100;
     MatriceAdjacence[1][1] = INT8_MAX;
-    MatriceAdjacence[1][2] = 50;
+    MatriceAdjacence[1][2] = 10;
     MatriceAdjacence[1][3] = INT8_MAX;
+    MatriceAdjacence[1][4] = INT8_MAX;
+
     MatriceAdjacence[2][0] = 100;
-    MatriceAdjacence[2][1] = 50;
+    MatriceAdjacence[2][1] = 10;
     MatriceAdjacence[2][2] = INT8_MAX;
-    MatriceAdjacence[2][3] = 50;
+    MatriceAdjacence[2][3] = 140;
+    MatriceAdjacence[2][4] = INT8_MAX;
+
     MatriceAdjacence[3][0] = 100;
-    MatriceAdjacence[3][0] = INT8_MAX;
-    MatriceAdjacence[3][0] = 50;
-    MatriceAdjacence[3][0] = INT8_MAX;
+    MatriceAdjacence[3][1] = INT8_MAX;
+    MatriceAdjacence[3][2] = 140;
+    MatriceAdjacence[3][3] = INT8_MAX;
+    MatriceAdjacence[3][4] = 10;
+
+    MatriceAdjacence[4][0] = 100;
+    MatriceAdjacence[4][1] = INT8_MAX;
+    MatriceAdjacence[4][2] = INT8_MAX;
+    MatriceAdjacence[4][3] = 10;
+    MatriceAdjacence[4][4] = INT8_MAX;
 
     inventoryMax[0] = 5000;
-    inventoryMax[1] = 1500;
-    inventoryMax[2] = 2000;
-    inventoryMax[3] = 3000;
+    inventoryMax[1] = 5000;
+    inventoryMax[2] = 3000;
+    inventoryMax[3] = 2000;
+    inventoryMax[4] = 4000;
 
     increaseSpeed[0] = 5000;
-    increaseSpeed[1] = 500;
-    increaseSpeed[2] = 500;
-    increaseSpeed[3] = 500;
+    increaseSpeed[1] = 1000;
+    increaseSpeed[2] = 3000;
+    increaseSpeed[3] = 2000;
+    increaseSpeed[4] = 1500;
 
 
     currentInventory[0] = 5000;
-    currentInventory[1] = 1500;
-    currentInventory[2] = 2000;
-    currentInventory[3] = 3000;
+    currentInventory[1] = 5000;
+    currentInventory[2] = 3000;
+    currentInventory[3] = 2000;
+    currentInventory[4] = 4000;
 
-    return 4;
 
 }
 
@@ -168,8 +184,11 @@ path min_onjective(path currentPath, int **  matrice, int * inventoryMax, int * 
 {
     vector<int> neighbours = getNeighbours(currentPath, numberOfRetailer, matrice);
     path minPath = currentPath;
+    cout << "size of neighbour " << neighbours.size() << endl;
+
     for (int i=0; i< neighbours.size(); i++)
     {
+
         path NewcurrentPath = currentPath;
         NewcurrentPath.visited_node.push_back(neighbours[i]);
         bool isValid = checkCondition(NewcurrentPath, inventoryMax, currentInventory, numberOfRetailer, increaseSpeed, shipments, capacityVehicle);
@@ -189,28 +208,46 @@ path min_onjective(path currentPath, int **  matrice, int * inventoryMax, int * 
 }
 
 int main() {
+    int numberOfNodes = 5;
+    int numberOfTimeRunning = 10;
 
-    int capacityVehicle = 3000;
-    bool isValid = false;
-    int ** matricePointeur;
-    int * inventoryMax;
-    int * currentInventory;
-    int * increaseSpeed;
-    int * shipments;
-    //TODO : faire la fonction pour diminuer le supplier
-    int numberOfClient = creerInitialCondition(matricePointeur, inventoryMax, currentInventory, increaseSpeed);
+
+
+    int capacityVehicle = 5000;
+    int ** matricePointeur = (int **)malloc(numberOfNodes*sizeof(int*));
+    for (int i=0; i<numberOfNodes; i++){
+        matricePointeur[i]= (int *)malloc(numberOfNodes*sizeof(int));
+    }
+    int * inventoryMax = (int *)malloc(numberOfNodes* sizeof(int));
+    int * currentInventory = (int *)malloc(numberOfNodes* sizeof(int));
+    int * increaseSpeed = (int *)malloc(numberOfNodes* sizeof(int));
+    int * shipments = (int *)malloc(numberOfNodes* sizeof(int));
+
+    creerInitialCondition(matricePointeur, inventoryMax, increaseSpeed, currentInventory);
+
     path currentPath;
     currentPath.objectif_value = INT8_MAX;
     currentPath.visited_node.push_back(0);
 
-    currentPath = min_onjective(currentPath, matricePointeur, inventoryMax, currentInventory, numberOfClient, increaseSpeed, shipments, capacityVehicle);
-    for (int i=0; i< currentPath.visited_node.size(); i++)
+    for(int j=0; j< numberOfTimeRunning;j++)
     {
-        cout << currentPath.visited_node[i] << " ";
-    }
-    cout << endl;
-    cout << currentPath.objectif_value << endl;
+        currentPath = min_onjective(currentPath, matricePointeur, inventoryMax, currentInventory, numberOfNodes, increaseSpeed, shipments, capacityVehicle);
 
+        for (int i=0; i< currentPath.visited_node.size(); i++)
+        {
+            cout << currentPath.visited_node[i] << " ";
+        }
+        cout << endl;
+        cout << currentPath.objectif_value << endl;
+    }
+
+
+
+    delete matricePointeur;
+    delete inventoryMax;
+    delete currentInventory;
+    delete increaseSpeed;
+    delete shipments;
     return 0;
 
 }

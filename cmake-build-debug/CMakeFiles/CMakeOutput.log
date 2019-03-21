@@ -1,16 +1,16 @@
 The system is: Windows - 10.0.17763 - AMD64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
-Compiler: C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/cl.exe 
+Compiler: C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx86/x86/cl.exe 
 Build flags: 
 Id flags:  
 
 The output was:
 0
-Compilateur d'optimisation Microsoft (R) C/C++ versionÿ19.00.24215.1 pour x86
+Compilateur d'optimisation Microsoft (R) C/C++ versionÿ19.16.27027.1 pour x86
 Copyright (C) Microsoft Corporation. Tous droits r‚serv‚s.
 
 CMakeCCompilerId.c
-Microsoft (R) Incremental Linker Version 14.00.24215.1
+Microsoft (R) Incremental Linker Version 14.16.27027.1
 Copyright (C) Microsoft Corporation.  All rights reserved.
 
 /out:CMakeCCompilerId.exe 
@@ -24,17 +24,17 @@ Compilation of the C compiler identification source "CMakeCCompilerId.c" produce
 The C compiler identification is MSVC, found in "C:/Users/lserazin/AppData/Local/gitkraken/app-5.0.2/Algo/cmake-build-debug/CMakeFiles/3.13.2/CompilerIdC/CMakeCCompilerId.exe"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
-Compiler: C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/cl.exe 
+Compiler: C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx86/x86/cl.exe 
 Build flags: 
 Id flags:  
 
 The output was:
 0
-Compilateur d'optimisation Microsoft (R) C/C++ versionÿ19.00.24215.1 pour x86
+Compilateur d'optimisation Microsoft (R) C/C++ versionÿ19.16.27027.1 pour x86
 Copyright (C) Microsoft Corporation. Tous droits r‚serv‚s.
 
 CMakeCXXCompilerId.cpp
-Microsoft (R) Incremental Linker Version 14.00.24215.1
+Microsoft (R) Incremental Linker Version 14.16.27027.1
 Copyright (C) Microsoft Corporation.  All rights reserved.
 
 /out:CMakeCXXCompilerId.exe 
@@ -50,25 +50,25 @@ The CXX compiler identification is MSVC, found in "C:/Users/lserazin/AppData/Loc
 Determining if the C compiler works passed with the following output:
 Change Dir: C:/Users/lserazin/AppData/Local/gitkraken/app-5.0.2/Algo/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"nmake" "/nologo" "cmTC_736c3\fast"
-	"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\nmake.exe" -f CMakeFiles\cmTC_736c3.dir\build.make /nologo -L                  CMakeFiles\cmTC_736c3.dir\build
-Building C object CMakeFiles/cmTC_736c3.dir/testCCompiler.c.obj
-	C:\PROGRA~2\MICROS~1.0\VC\bin\cl.exe @C:\Users\lserazin\AppData\Local\Temp\nm6B47.tmp
+Run Build Command:"nmake" "/nologo" "cmTC_20157\fast"
+	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_20157.dir\build.make /nologo -L                  CMakeFiles\cmTC_20157.dir\build
+Building C object CMakeFiles/cmTC_20157.dir/testCCompiler.c.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\lserazin\AppData\Local\Temp\nm3D84.tmp
 testCCompiler.c
-Linking C executable cmTC_736c3.exe
-	C:\Users\lserazin\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\183.5429.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_736c3.dir --manifests  -- C:\PROGRA~2\MICROS~1.0\VC\bin\link.exe /nologo @CMakeFiles\cmTC_736c3.dir\objects1.rsp @C:\Users\lserazin\AppData\Local\Temp\nm6C9F.tmp
+Linking C executable cmTC_20157.exe
+	C:\Users\lserazin\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\183.5429.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_20157.dir --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_20157.dir\objects1.rsp @C:\Users\lserazin\AppData\Local\Temp\nm3DD3.tmp
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: C:/Users/lserazin/AppData/Local/gitkraken/app-5.0.2/Algo/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"nmake" "/nologo" "cmTC_f83f9\fast"
-	"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\nmake.exe" -f CMakeFiles\cmTC_f83f9.dir\build.make /nologo -L                  CMakeFiles\cmTC_f83f9.dir\build
-Building C object CMakeFiles/cmTC_f83f9.dir/CMakeCCompilerABI.c.obj
-	C:\PROGRA~2\MICROS~1.0\VC\bin\cl.exe @C:\Users\lserazin\AppData\Local\Temp\nm6EB2.tmp
+Run Build Command:"nmake" "/nologo" "cmTC_a1a24\fast"
+	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_a1a24.dir\build.make /nologo -L                  CMakeFiles\cmTC_a1a24.dir\build
+Building C object CMakeFiles/cmTC_a1a24.dir/CMakeCCompilerABI.c.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\lserazin\AppData\Local\Temp\nm3FF5.tmp
 CMakeCCompilerABI.c
-Linking C executable cmTC_f83f9.exe
-	C:\Users\lserazin\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\183.5429.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_f83f9.dir --manifests  -- C:\PROGRA~2\MICROS~1.0\VC\bin\link.exe /nologo @CMakeFiles\cmTC_f83f9.dir\objects1.rsp @C:\Users\lserazin\AppData\Local\Temp\nm6F01.tmp
+Linking C executable cmTC_a1a24.exe
+	C:\Users\lserazin\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\183.5429.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_a1a24.dir --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_a1a24.dir\objects1.rsp @C:\Users\lserazin\AppData\Local\Temp\nm4044.tmp
 
 
 
@@ -76,13 +76,13 @@ Linking C executable cmTC_f83f9.exe
 Detecting C [] compiler features compiled with the following output:
 Change Dir: C:/Users/lserazin/AppData/Local/gitkraken/app-5.0.2/Algo/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"nmake" "/nologo" "cmTC_21dad\fast"
-	"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\nmake.exe" -f CMakeFiles\cmTC_21dad.dir\build.make /nologo -L                  CMakeFiles\cmTC_21dad.dir\build
-Building C object CMakeFiles/cmTC_21dad.dir/feature_tests.c.obj
-	C:\PROGRA~2\MICROS~1.0\VC\bin\cl.exe @C:\Users\lserazin\AppData\Local\Temp\nm7113.tmp
+Run Build Command:"nmake" "/nologo" "cmTC_694fe\fast"
+	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_694fe.dir\build.make /nologo -L                  CMakeFiles\cmTC_694fe.dir\build
+Building C object CMakeFiles/cmTC_694fe.dir/feature_tests.c.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\lserazin\AppData\Local\Temp\nm4276.tmp
 feature_tests.c
-Linking C executable cmTC_21dad.exe
-	C:\Users\lserazin\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\183.5429.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_21dad.dir --manifests  -- C:\PROGRA~2\MICROS~1.0\VC\bin\link.exe /nologo @CMakeFiles\cmTC_21dad.dir\objects1.rsp @C:\Users\lserazin\AppData\Local\Temp\nm7172.tmp
+Linking C executable cmTC_694fe.exe
+	C:\Users\lserazin\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\183.5429.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_694fe.dir --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_694fe.dir\objects1.rsp @C:\Users\lserazin\AppData\Local\Temp\nm42C5.tmp
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -90,25 +90,25 @@ Linking C executable cmTC_21dad.exe
 Determining if the CXX compiler works passed with the following output:
 Change Dir: C:/Users/lserazin/AppData/Local/gitkraken/app-5.0.2/Algo/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"nmake" "/nologo" "cmTC_8a187\fast"
-	"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\nmake.exe" -f CMakeFiles\cmTC_8a187.dir\build.make /nologo -L                  CMakeFiles\cmTC_8a187.dir\build
-Building CXX object CMakeFiles/cmTC_8a187.dir/testCXXCompiler.cxx.obj
-	C:\PROGRA~2\MICROS~1.0\VC\bin\cl.exe @C:\Users\lserazin\AppData\Local\Temp\nm73A3.tmp
+Run Build Command:"nmake" "/nologo" "cmTC_6fceb\fast"
+	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_6fceb.dir\build.make /nologo -L                  CMakeFiles\cmTC_6fceb.dir\build
+Building CXX object CMakeFiles/cmTC_6fceb.dir/testCXXCompiler.cxx.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\lserazin\AppData\Local\Temp\nm4535.tmp
 testCXXCompiler.cxx
-Linking CXX executable cmTC_8a187.exe
-	C:\Users\lserazin\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\183.5429.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_8a187.dir --manifests  -- C:\PROGRA~2\MICROS~1.0\VC\bin\link.exe /nologo @CMakeFiles\cmTC_8a187.dir\objects1.rsp @C:\Users\lserazin\AppData\Local\Temp\nm7402.tmp
+Linking CXX executable cmTC_6fceb.exe
+	C:\Users\lserazin\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\183.5429.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_6fceb.dir --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_6fceb.dir\objects1.rsp @C:\Users\lserazin\AppData\Local\Temp\nm4575.tmp
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: C:/Users/lserazin/AppData/Local/gitkraken/app-5.0.2/Algo/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"nmake" "/nologo" "cmTC_9c01a\fast"
-	"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\nmake.exe" -f CMakeFiles\cmTC_9c01a.dir\build.make /nologo -L                  CMakeFiles\cmTC_9c01a.dir\build
-Building CXX object CMakeFiles/cmTC_9c01a.dir/CMakeCXXCompilerABI.cpp.obj
-	C:\PROGRA~2\MICROS~1.0\VC\bin\cl.exe @C:\Users\lserazin\AppData\Local\Temp\nm75F5.tmp
+Run Build Command:"nmake" "/nologo" "cmTC_21dc3\fast"
+	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_21dc3.dir\build.make /nologo -L                  CMakeFiles\cmTC_21dc3.dir\build
+Building CXX object CMakeFiles/cmTC_21dc3.dir/CMakeCXXCompilerABI.cpp.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\lserazin\AppData\Local\Temp\nm47C5.tmp
 CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_9c01a.exe
-	C:\Users\lserazin\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\183.5429.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_9c01a.dir --manifests  -- C:\PROGRA~2\MICROS~1.0\VC\bin\link.exe /nologo @CMakeFiles\cmTC_9c01a.dir\objects1.rsp @C:\Users\lserazin\AppData\Local\Temp\nm7654.tmp
+Linking CXX executable cmTC_21dc3.exe
+	C:\Users\lserazin\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\183.5429.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_21dc3.dir --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_21dc3.dir\objects1.rsp @C:\Users\lserazin\AppData\Local\Temp\nm4814.tmp
 
 
 
@@ -116,16 +116,16 @@ Linking CXX executable cmTC_9c01a.exe
 Detecting CXX [] compiler features compiled with the following output:
 Change Dir: C:/Users/lserazin/AppData/Local/gitkraken/app-5.0.2/Algo/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command:"nmake" "/nologo" "cmTC_1a926\fast"
-	"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\nmake.exe" -f CMakeFiles\cmTC_1a926.dir\build.make /nologo -L                  CMakeFiles\cmTC_1a926.dir\build
-Building CXX object CMakeFiles/cmTC_1a926.dir/feature_tests.cxx.obj
-	C:\PROGRA~2\MICROS~1.0\VC\bin\cl.exe @C:\Users\lserazin\AppData\Local\Temp\nm7885.tmp
+Run Build Command:"nmake" "/nologo" "cmTC_240ac\fast"
+	"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\nmake.exe" -f CMakeFiles\cmTC_240ac.dir\build.make /nologo -L                  CMakeFiles\cmTC_240ac.dir\build
+Building CXX object CMakeFiles/cmTC_240ac.dir/feature_tests.cxx.obj
+	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @C:\Users\lserazin\AppData\Local\Temp\nm4A75.tmp
 feature_tests.cxx
-Linking CXX executable cmTC_1a926.exe
-	C:\Users\lserazin\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\183.5429.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_1a926.dir --manifests  -- C:\PROGRA~2\MICROS~1.0\VC\bin\link.exe /nologo @CMakeFiles\cmTC_1a926.dir\objects1.rsp @C:\Users\lserazin\AppData\Local\Temp\nm78E4.tmp
+Linking CXX executable cmTC_240ac.exe
+	C:\Users\lserazin\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\183.5429.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\cmTC_240ac.dir --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_240ac.dir\objects1.rsp @C:\Users\lserazin\AppData\Local\Temp\nm4AC4.tmp
 
 
-    Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
     Feature record: CXX_FEATURE:1cxx_alias_templates
     Feature record: CXX_FEATURE:1cxx_alignas
     Feature record: CXX_FEATURE:1cxx_alignof
@@ -137,7 +137,7 @@ Linking CXX executable cmTC_1a926.exe
     Feature record: CXX_FEATURE:1cxx_contextual_conversions
     Feature record: CXX_FEATURE:1cxx_decltype
     Feature record: CXX_FEATURE:1cxx_decltype_auto
-    Feature record: CXX_FEATURE:0cxx_decltype_incomplete_return_types
+    Feature record: CXX_FEATURE:1cxx_decltype_incomplete_return_types
     Feature record: CXX_FEATURE:1cxx_default_function_template_args
     Feature record: CXX_FEATURE:1cxx_defaulted_functions
     Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
