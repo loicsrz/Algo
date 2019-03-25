@@ -213,6 +213,7 @@ path min_onjective(path currentPath, int **  matrice, int * inventoryMax, int * 
                 continue;
             }
 
+            //cout << "Inventaire de " << j << " " << currentInventory[j] << endl;
             if(currentInventory[j] + increaseSpeed[j] < 0)
             {
                 NewcurrentPath.objectif_value = -1;
@@ -221,7 +222,7 @@ path min_onjective(path currentPath, int **  matrice, int * inventoryMax, int * 
 
         if (NewcurrentPath.objectif_value != -1 && (NewcurrentPath.objectif_value < minPath.objectif_value || minPath.objectif_value ==0 || minPath.objectif_value ==-1))
         {
-            PrintPath(NewcurrentPath);
+           // PrintPath(NewcurrentPath);
             minPath = NewcurrentPath;
         }
     }
@@ -259,13 +260,14 @@ int main() {
         {
             currentInventory[0] = inventoryMax[0];
         }
+
         currentPath = min_onjective(currentPath, matricePointeur, inventoryMax, currentInventory, numberOfNodes, increaseSpeed, capacityVehicle, currentInventory[0]);
 
 
         PrintPath(currentPath);
         for (int i=1;i<currentPath.visited_node.size()-1;i++)
         {
-            currentInventory[i] = inventoryMax[i];
+            currentInventory[currentPath.visited_node[i]] = inventoryMax[currentPath.visited_node[i]];
         }
 
         cout << "End of day"<< endl;
