@@ -47,19 +47,24 @@ vector<int> getNeighbours(path current, int number_retailer, int ** matrice)
 }
 
 
-void objective_function (path *current, int * currentInventory, int number_retailer, int ** matrice, int SupplierInventory)
+void objective_function (path *current, int * currentInventory, int number_retailer, int ** matrice, int SupplierInventory, int * inventoryMax)
 {
-    int objective_number = current->objectif_value;
+    int objective_number = 0;
 
     for (int i =1;i< number_retailer ; i++)
     {
         objective_number +=  currentInventory[i];
     }
     objective_number += SupplierInventory;
-    objective_number +=  matrice[current->visited_node[current->visited_node.size()-2]][current->visited_node[current->visited_node.size()-1]];
+    for (int j=0;j<current->visited_node.size()-1;j++)
+    {
+       objective_number += matrice[current->visited_node[j]][current->visited_node[j+1]];
+
+       objective_number += inventoryMax[current->visited_node[j]] - currentInventory[current->visited_node[j]];
+    }
+    objective_number += inventoryMax[current->visited_node[current->visited_node.size()-1]] - currentInventory[current->visited_node[current->visited_node.size()-1]];
     current->objectif_value = objective_number;
 
-   // cout << "objective function :" << current->objectif_value << endl;
 }
 
 path recursiveFunction (path currentPath, int **  matrice, int * inventoryMax, int * currentInventory, int numberOfRetailer, int * increaseSpeed, int capacityVehicle, int SupplierInventoryStock)
@@ -78,13 +83,13 @@ path recursiveFunction (path currentPath, int **  matrice, int * inventoryMax, i
         }
         path NewcurrentPath = currentPath;
         NewcurrentPath.visited_node.push_back(neighbours[i]);
-        bool isValid = checkCondition( SupplierInventoryStock, capacityVehicle);
+        int tempSupplier = SupplierInventoryStock - inventoryMax[neighbours[i]] + currentInventory[neighbours[i]];
+        bool isValid = checkCondition( tempSupplier, capacityVehicle);
         if(!isValid)
         {
             continue;
         }
-        int tempSupplier = SupplierInventoryStock - inventoryMax[neighbours[i]] + currentInventory[neighbours[i]];
-        objective_function(&NewcurrentPath, currentInventory, numberOfRetailer, matrice, SupplierInventoryStock);
+        objective_function(&NewcurrentPath, currentInventory, numberOfRetailer, matrice, tempSupplier, inventoryMax);
         NewcurrentPath = recursiveFunction(NewcurrentPath, matrice, inventoryMax, currentInventory, numberOfRetailer, increaseSpeed, capacityVehicle, tempSupplier);
 
         for(int j=1;j< numberOfRetailer;j++)
@@ -106,7 +111,7 @@ path recursiveFunction (path currentPath, int **  matrice, int * inventoryMax, i
         }
     }
     currentPath.visited_node.push_back(0);
-    objective_function(&currentPath, currentInventory, numberOfRetailer, matrice, SupplierInventoryStock);
+    objective_function(&currentPath, currentInventory, numberOfRetailer, matrice, SupplierInventoryStock, inventoryMax);
     for(int j=1;j< numberOfRetailer;j++)
     {
         if (find(currentPath.visited_node.begin(), currentPath.visited_node.end(), j) != currentPath.visited_node.end())
@@ -195,15 +200,14 @@ path min_onjective(path currentPath, int **  matrice, int * inventoryMax, int * 
         path NewcurrentPath = currentPath;
         NewcurrentPath.visited_node.push_back(neighbours[i]);
 
-        bool isValid = checkCondition(SupplierInventoryStock, capacityVehicle);
+        int tempSupplier = SupplierInventoryStock - inventoryMax[neighbours[i]] + currentInventory[neighbours[i]];
+        bool isValid = checkCondition(tempSupplier, capacityVehicle);
         if(!isValid)
         {
             continue;
         }
 
-        int tempSupplier = SupplierInventoryStock - inventoryMax[neighbours[i]] + currentInventory[neighbours[i]];
-
-        objective_function(&NewcurrentPath, currentInventory, numberOfRetailer, matrice, SupplierInventoryStock);
+        objective_function(&NewcurrentPath, currentInventory, numberOfRetailer, matrice, tempSupplier, inventoryMax);
         NewcurrentPath = recursiveFunction(NewcurrentPath, matrice, inventoryMax, currentInventory, numberOfRetailer, increaseSpeed, capacityVehicle, tempSupplier);
 
         for(int j=1;j< numberOfRetailer;j++)
