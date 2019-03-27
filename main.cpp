@@ -9,6 +9,8 @@ struct path {
     vector<int> visited_node;
 };
 
+
+/// Fonction qui sert à afficher un path avec sa valeur de la fonction objectif
 void PrintPath (path currentPath)
 {
     for (unsigned int i=0; i< currentPath.visited_node.size(); i++)
@@ -19,6 +21,7 @@ void PrintPath (path currentPath)
     cout << currentPath.objectif_value << endl;
 }
 
+/// On vérifie que le stock passé en entrer est conforme, cad qu'il est supérieure à 0
 bool checkCondition( int SupplierInventoryStock, int capacityVehicle)
 {
     if (SupplierInventoryStock < 0)
@@ -33,6 +36,7 @@ bool checkCondition( int SupplierInventoryStock, int capacityVehicle)
 
 }
 
+/// Pour un path en entrée, la fonction ressort tous les voisins du dernier noeud du path
 vector<int> getNeighbours(path current, int number_retailer, int ** matrice)
 {
     vector<int> neighbours;
@@ -46,7 +50,7 @@ vector<int> getNeighbours(path current, int number_retailer, int ** matrice)
     return neighbours;
 }
 
-
+/// Fonction permettant le calcul de la valeur de la fonction objective
 void objective_function (path *current, int * currentInventory, int number_retailer, int ** matrice, int SupplierInventory, int * inventoryMax)
 {
     int objective_number = 0;
@@ -56,7 +60,8 @@ void objective_function (path *current, int * currentInventory, int number_retai
         objective_number +=  currentInventory[i];
     }
     objective_number += SupplierInventory;
-    for (int j=0;j<current->visited_node.size()-1;j++)
+
+    for (unsigned int j=0;j<current->visited_node.size()-1;j++)
     {
        objective_number += matrice[current->visited_node[j]][current->visited_node[j+1]];
 
@@ -64,17 +69,14 @@ void objective_function (path *current, int * currentInventory, int number_retai
     }
     objective_number += inventoryMax[current->visited_node[current->visited_node.size()-1]] - currentInventory[current->visited_node[current->visited_node.size()-1]];
     current->objectif_value = objective_number;
-
 }
-
-path recursiveFunction (path currentPath, int **  matrice, int * inventoryMax, int * currentInventory, int numberOfRetailer, int * increaseSpeed, int capacityVehicle, int SupplierInventoryStock)
+/// Fonction récursive permettant de récupérer l'ensemble des chenins possibles
+vector<path> recursiveFunction (path currentPath, int **  matrice, int * inventoryMax, int * currentInventory, int numberOfRetailer, int * increaseSpeed, int capacityVehicle, int SupplierInventoryStock)
 {
+    /// On récupère tous les voisins
     vector<int> neighbours = getNeighbours(currentPath, numberOfRetailer, matrice);
-    path minPath;
-    minPath.objectif_value =-1;
 
-    //cout << currentPath.visited_node[currentPath.visited_node.size()-1] << endl;
-
+    vector<path> pathToGive;
     for ( unsigned int i=0; i< neighbours.size(); i++)
     {
         if (find(currentPath.visited_node.begin(), currentPath.visited_node.end(), neighbours[i]) != currentPath.visited_node.end())
@@ -90,30 +92,35 @@ path recursiveFunction (path currentPath, int **  matrice, int * inventoryMax, i
             continue;
         }
         objective_function(&NewcurrentPath, currentInventory, numberOfRetailer, matrice, tempSupplier, inventoryMax);
-        NewcurrentPath = recursiveFunction(NewcurrentPath, matrice, inventoryMax, currentInventory, numberOfRetailer, increaseSpeed, capacityVehicle, tempSupplier);
+        vector <path> NewTabPath;
+        NewTabPath = recursiveFunction(NewcurrentPath, matrice, inventoryMax, currentInventory, numberOfRetailer, increaseSpeed, capacityVehicle, tempSupplier);
 
-        for(int j=1;j< numberOfRetailer;j++)
+        for (unsigned int k=0;k< NewTabPath.size();k++)
         {
-            if (find(NewcurrentPath.visited_node.begin(), NewcurrentPath.visited_node.end(), j) != NewcurrentPath.visited_node.end())
+            for(int j=1;j< numberOfRetailer;j++)
             {
-                continue;
+                if (find(NewTabPath[k].visited_node.begin(), NewTabPath[k].visited_node.end(), j) != NewTabPath[k].visited_node.end())
+                {
+                    continue;
+                }
+
+                if(currentInventory[j] + increaseSpeed[j] < 0)
+                {
+                    NewTabPath[k].objectif_value = -1;
+                }
             }
 
-            if(currentInventory[j] + increaseSpeed[j] < 0)
+            if (NewTabPath[k].objectif_value != -1)
             {
-                NewcurrentPath.objectif_value = -1;
+                pathToGive.push_back(NewTabPath[k]);
             }
-        }
-
-        if (NewcurrentPath.objectif_value != -1 && (NewcurrentPath.objectif_value < minPath.objectif_value || minPath.objectif_value ==0 || minPath.objectif_value ==-1))
-        {
-            minPath = NewcurrentPath;
         }
     }
     currentPath.visited_node.push_back(0);
     objective_function(&currentPath, currentInventory, numberOfRetailer, matrice, SupplierInventoryStock, inventoryMax);
     for(int j=1;j< numberOfRetailer;j++)
     {
+        /// Permet de checker si le chemin parcours tous les noeuds critiques
         if (find(currentPath.visited_node.begin(), currentPath.visited_node.end(), j) != currentPath.visited_node.end())
         {
             continue;
@@ -124,18 +131,19 @@ path recursiveFunction (path currentPath, int **  matrice, int * inventoryMax, i
             currentPath.objectif_value = -1;
         }
     }
-    if (currentPath.objectif_value != -1 && (currentPath.objectif_value < minPath.objectif_value || minPath.objectif_value ==0 || minPath.objectif_value ==-1))
+    if (currentPath.objectif_value != -1)
     {
-        minPath = currentPath;
+        //PrintPath(currentPath);
+        pathToGive.push_back(currentPath);
     }
 
-    return minPath;
+    return pathToGive;
 
 }
 
 void creerInitialCondition (int ** MatriceAdjacence, int * inventoryMax, int * increaseSpeed, int * currentInventory)
 {
-
+    ///Création de la matrice et initialisation des différents paramètres du problème
     MatriceAdjacence[0][0] = INT8_MAX;
     MatriceAdjacence[0][1] = 100;
     MatriceAdjacence[0][2] = 100;
@@ -188,18 +196,37 @@ void creerInitialCondition (int ** MatriceAdjacence, int * inventoryMax, int * i
 
 }
 
-path min_onjective(path currentPath, int **  matrice, int * inventoryMax, int * currentInventory, int numberOfRetailer, int * increaseSpeed, int capacityVehicle, int SupplierInventoryStock)
+vector<path> min_onjective(path currentPath, int **  matrice, int * inventoryMax, int * currentInventory, int numberOfRetailer, int * increaseSpeed, int capacityVehicle, int SupplierInventoryStock)
 {
+    /// Initialisation des paramètres en fonction du chemin précédent
+    for (int k=0;k<numberOfRetailer;k++)
+    {
+        currentInventory[k] = currentInventory[k] + increaseSpeed[k];
+    }
+    if(currentInventory[0] > inventoryMax[0])
+    {
+        currentInventory[0] = inventoryMax[0];
+    }
+    SupplierInventoryStock = currentInventory[0];
 
+    for (unsigned int i=0;i<currentPath.visited_node.size();i++)
+    {
+        SupplierInventoryStock -= inventoryMax[currentPath.visited_node[i]] - currentInventory[currentPath.visited_node[i]];
+        currentInventory[currentPath.visited_node[i]] = inventoryMax[currentPath.visited_node[i]];
+    }
+    /// Calcul des voisins du dernier noeud contenu dans le chemin
+    vector<path> pathToGive;
     vector<int> neighbours = getNeighbours(currentPath, numberOfRetailer, matrice);
-    path minPath;
-    minPath.objectif_value =-1;
 
+    /// Pour chaque voisin
     for (unsigned int i=0; i< neighbours.size(); i++)
     {
-        path NewcurrentPath = currentPath;
+        path NewcurrentPath;
+        NewcurrentPath.visited_node.push_back(0);
+        NewcurrentPath.objectif_value = 0;
         NewcurrentPath.visited_node.push_back(neighbours[i]);
 
+        /// On regarde si le chemin pris respecte les conditions en entrées ( le stock de l'inventaire est suffisant)
         int tempSupplier = SupplierInventoryStock - inventoryMax[neighbours[i]] + currentInventory[neighbours[i]];
         bool isValid = checkCondition(tempSupplier, capacityVehicle);
         if(!isValid)
@@ -207,36 +234,98 @@ path min_onjective(path currentPath, int **  matrice, int * inventoryMax, int * 
             continue;
         }
 
+        /// On va chercher récursivement tous les fils de ce chemin et on remonte tous ceux qui sont corrects
         objective_function(&NewcurrentPath, currentInventory, numberOfRetailer, matrice, tempSupplier, inventoryMax);
-        NewcurrentPath = recursiveFunction(NewcurrentPath, matrice, inventoryMax, currentInventory, numberOfRetailer, increaseSpeed, capacityVehicle, tempSupplier);
+        vector <path> NewTabPath;
+        NewTabPath = recursiveFunction(NewcurrentPath, matrice, inventoryMax, currentInventory, numberOfRetailer, increaseSpeed, capacityVehicle, tempSupplier);
 
-        for(int j=1;j< numberOfRetailer;j++)
+        /// On regarde que le chemin une fois calculé respecte les conditions finales
+        for (unsigned int k=0;k< NewTabPath.size();k++)
         {
-            if (find(NewcurrentPath.visited_node.begin(), NewcurrentPath.visited_node.end(), j) != NewcurrentPath.visited_node.end())
+            for(int j=1;j< numberOfRetailer;j++)
             {
-                continue;
-            }
+                /// On vérifie qu'il n'y est pas de doublon
+               if (find(NewTabPath[k].visited_node.begin(), NewTabPath[k].visited_node.end(), j) != NewTabPath[k].visited_node.end())
+                {
 
-            //cout << "Inventaire de " << j << " " << currentInventory[j] << endl;
-            if(currentInventory[j] + increaseSpeed[j] < 0)
+                    continue;
+                }
+                /// On regarde si aucun inventaire ne va se vider au tour prochain
+                if(currentInventory[j] + increaseSpeed[j] < 0)
+                {
+                    NewTabPath[k].objectif_value = -1;
+                }
+            }
+            /// On ajoute le chemin dans la liste des chemins valides s'il respecte toutes les conditions
+            if (NewTabPath[k].objectif_value != -1)
             {
-                NewcurrentPath.objectif_value = -1;
+               // PrintPath(NewTabPath[k]);
+                pathToGive.push_back(NewTabPath[k]);
             }
-        }
-
-        if (NewcurrentPath.objectif_value != -1 && (NewcurrentPath.objectif_value < minPath.objectif_value || minPath.objectif_value ==0 || minPath.objectif_value ==-1))
-        {
-           // PrintPath(NewcurrentPath);
-            minPath = NewcurrentPath;
         }
     }
+    return pathToGive;
 
-    return minPath;
 }
+
+vector<path> Recursive_temps (vector<path> tabPath, int length, vector<path> precedence, int ** matricePointeur, int * inventoryMax, int * currentInventory, int numberOfNodes, int * increaseSpeed,  int capacityVehicle, int SupplierInventoryStock)
+{
+    vector<path> minTabPath;
+    int minTabPathObjective =INT32_MAX;
+    if(length == 0)
+    {
+        path MinPath;
+        for (int i=0;i<tabPath.size();i++)
+        {
+            if (tabPath[i].objectif_value < minTabPathObjective)
+            {
+                minTabPathObjective = tabPath[i].objectif_value;
+                MinPath = tabPath[i];
+            }
+        }
+        precedence.push_back(MinPath);
+        return precedence;
+
+    }
+
+    vector<path> newTabPath;
+    for (unsigned int i=0;i<tabPath.size();i++)
+    {
+       newTabPath = min_onjective(tabPath[i], matricePointeur, inventoryMax, currentInventory, numberOfNodes, increaseSpeed, capacityVehicle, SupplierInventoryStock);
+       precedence.push_back(tabPath[i]);
+       vector<path> tabPrecedentPath = Recursive_temps(newTabPath, length-1,precedence,matricePointeur, inventoryMax, currentInventory, numberOfNodes, increaseSpeed, capacityVehicle, SupplierInventoryStock);
+
+       precedence.pop_back();
+       int min_tab_optimum = 0;
+       for (unsigned int k=0;k<tabPrecedentPath.size();k++)
+       {
+           min_tab_optimum += tabPrecedentPath[k].objectif_value;
+       }
+       //cout << min_tab_optimum << endl;
+       //cout << minTabPathObjective << endl;
+       if (min_tab_optimum < minTabPathObjective && min_tab_optimum !=0)
+       {
+           minTabPath.clear();
+           for(unsigned int j=0;j<tabPrecedentPath.size();j++)
+           {
+                minTabPath.push_back(tabPrecedentPath[j]);
+           }
+//           for (int j = 0;j<minTabPath.size();j++)
+//           {
+//               PrintPath(minTabPath[j]);
+//           }
+           cout << endl;
+           minTabPathObjective = min_tab_optimum;
+       }
+    }
+    return minTabPath;
+}
+
+
 
 int main() {
     int numberOfNodes = 5;
-    int numberOfTimeRunning = 3;
+    int numberOfTimeRunning = 2;
 
 
     int capacityVehicle = 5000;
@@ -249,33 +338,22 @@ int main() {
     int * increaseSpeed = (int *)malloc(numberOfNodes* sizeof(int));
 
     creerInitialCondition(matricePointeur, inventoryMax, increaseSpeed, currentInventory);
+    vector <path> currentPath;
+    vector <path> precedence;
+    path beginPath;
+    beginPath.objectif_value = 0;
+    beginPath.visited_node.push_back(0);
+    currentPath.push_back(beginPath);
 
-    for(int j=1; j<= numberOfTimeRunning;j++)
+
+    currentPath = Recursive_temps(currentPath,numberOfTimeRunning,precedence, matricePointeur, inventoryMax, currentInventory, numberOfNodes, increaseSpeed, capacityVehicle, currentInventory[0]);
+    currentPath.erase(currentPath.begin());
+    for (int i=0;i<currentPath.size();i++)
     {
-        path currentPath;
-        currentPath.objectif_value = 0;
-        currentPath.visited_node.push_back(0);
-
-        for (int k=0;k<numberOfNodes;k++)
-        {
-            currentInventory[k] = currentInventory[k] + increaseSpeed[k];
-        }
-        if(currentInventory[0] > inventoryMax[0])
-        {
-            currentInventory[0] = inventoryMax[0];
-        }
-
-        currentPath = min_onjective(currentPath, matricePointeur, inventoryMax, currentInventory, numberOfNodes, increaseSpeed, capacityVehicle, currentInventory[0]);
-
-
-        PrintPath(currentPath);
-        for (int i=1;i<currentPath.visited_node.size()-1;i++)
-        {
-            currentInventory[currentPath.visited_node[i]] = inventoryMax[currentPath.visited_node[i]];
-        }
-
-        cout << "End of day"<< endl;
+        PrintPath(currentPath[i]);
+        cout << endl;
     }
+
     delete matricePointeur;
     delete inventoryMax;
     delete currentInventory;
