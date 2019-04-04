@@ -124,32 +124,86 @@ untitled\fast:
 	$(MAKE) -f CMakeFiles\untitled.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\untitled.dir\build
 .PHONY : untitled\fast
 
-main.obj: main.cpp.obj
+ExactMethod.obj: ExactMethod.cpp.obj
 
-.PHONY : main.obj
+.PHONY : ExactMethod.obj
 
 # target to build an object file
-main.cpp.obj:
-	$(MAKE) -f CMakeFiles\untitled.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\untitled.dir\main.cpp.obj
-.PHONY : main.cpp.obj
+ExactMethod.cpp.obj:
+	$(MAKE) -f CMakeFiles\untitled.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\untitled.dir\ExactMethod.cpp.obj
+.PHONY : ExactMethod.cpp.obj
 
-main.i: main.cpp.i
+ExactMethod.i: ExactMethod.cpp.i
 
-.PHONY : main.i
+.PHONY : ExactMethod.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles\untitled.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\untitled.dir\main.cpp.i
-.PHONY : main.cpp.i
+ExactMethod.cpp.i:
+	$(MAKE) -f CMakeFiles\untitled.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\untitled.dir\ExactMethod.cpp.i
+.PHONY : ExactMethod.cpp.i
 
-main.s: main.cpp.s
+ExactMethod.s: ExactMethod.cpp.s
 
-.PHONY : main.s
+.PHONY : ExactMethod.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles\untitled.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\untitled.dir\main.cpp.s
-.PHONY : main.cpp.s
+ExactMethod.cpp.s:
+	$(MAKE) -f CMakeFiles\untitled.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\untitled.dir\ExactMethod.cpp.s
+.PHONY : ExactMethod.cpp.s
+
+FirstHeuristic.obj: FirstHeuristic.cpp.obj
+
+.PHONY : FirstHeuristic.obj
+
+# target to build an object file
+FirstHeuristic.cpp.obj:
+	$(MAKE) -f CMakeFiles\untitled.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\untitled.dir\FirstHeuristic.cpp.obj
+.PHONY : FirstHeuristic.cpp.obj
+
+FirstHeuristic.i: FirstHeuristic.cpp.i
+
+.PHONY : FirstHeuristic.i
+
+# target to preprocess a source file
+FirstHeuristic.cpp.i:
+	$(MAKE) -f CMakeFiles\untitled.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\untitled.dir\FirstHeuristic.cpp.i
+.PHONY : FirstHeuristic.cpp.i
+
+FirstHeuristic.s: FirstHeuristic.cpp.s
+
+.PHONY : FirstHeuristic.s
+
+# target to generate assembly for a file
+FirstHeuristic.cpp.s:
+	$(MAKE) -f CMakeFiles\untitled.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\untitled.dir\FirstHeuristic.cpp.s
+.PHONY : FirstHeuristic.cpp.s
+
+SecondHeuristic.obj: SecondHeuristic.cpp.obj
+
+.PHONY : SecondHeuristic.obj
+
+# target to build an object file
+SecondHeuristic.cpp.obj:
+	$(MAKE) -f CMakeFiles\untitled.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\untitled.dir\SecondHeuristic.cpp.obj
+.PHONY : SecondHeuristic.cpp.obj
+
+SecondHeuristic.i: SecondHeuristic.cpp.i
+
+.PHONY : SecondHeuristic.i
+
+# target to preprocess a source file
+SecondHeuristic.cpp.i:
+	$(MAKE) -f CMakeFiles\untitled.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\untitled.dir\SecondHeuristic.cpp.i
+.PHONY : SecondHeuristic.cpp.i
+
+SecondHeuristic.s: SecondHeuristic.cpp.s
+
+.PHONY : SecondHeuristic.s
+
+# target to generate assembly for a file
+SecondHeuristic.cpp.s:
+	$(MAKE) -f CMakeFiles\untitled.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\untitled.dir\SecondHeuristic.cpp.s
+.PHONY : SecondHeuristic.cpp.s
 
 # Help Target
 help:
@@ -160,9 +214,15 @@ help:
 	@echo ... edit_cache
 	@echo ... untitled
 	@echo ... rebuild_cache
-	@echo ... main.obj
-	@echo ... main.i
-	@echo ... main.s
+	@echo ... ExactMethod.obj
+	@echo ... ExactMethod.i
+	@echo ... ExactMethod.s
+	@echo ... FirstHeuristic.obj
+	@echo ... FirstHeuristic.i
+	@echo ... FirstHeuristic.s
+	@echo ... SecondHeuristic.obj
+	@echo ... SecondHeuristic.i
+	@echo ... SecondHeuristic.s
 .PHONY : help
 
 

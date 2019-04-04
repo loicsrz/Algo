@@ -6,9 +6,11 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/lserazin/Documents/Algo/Algo/main.cpp
+C:/Users/lserazin/Documents/Algo/Algo/ExactMethod.cpp
 iostream
 -
 vector
+-
+ctime
 -
 

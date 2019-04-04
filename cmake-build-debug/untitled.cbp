@@ -84,7 +84,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/lserazin/Documents/Algo/Algo/main.cpp">
+		<Unit filename="C:/Users/lserazin/Documents/Algo/Algo/ExactMethod.cpp">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="C:/Users/lserazin/Documents/Algo/Algo/FirstHeuristic.cpp">
+			<Option target="untitled"/>
+		</Unit>
+		<Unit filename="C:/Users/lserazin/Documents/Algo/Algo/SecondHeuristic.cpp">
 			<Option target="untitled"/>
 		</Unit>
 		<Unit filename="C:/Users/lserazin/Documents/Algo/Algo/CMakeLists.txt">
