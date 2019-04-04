@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/lserazin/AppData/Local/gitkraken/app-5.0.2/Algo/main.cpp" "C:/Users/lserazin/AppData/Local/gitkraken/app-5.0.2/Algo/cmake-build-debug/CMakeFiles/untitled.dir/main.cpp.obj"
+  "C:/Users/lserazin/Documents/Algo/Algo/main.cpp" "C:/Users/lserazin/Documents/Algo/Algo/cmake-build-debug/CMakeFiles/untitled.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "MSVC")
 

@@ -154,53 +154,173 @@ void creerInitialCondition (int ** MatriceAdjacence, int * inventoryMax, int * i
 {
     ///Création de la matrice et initialisation des différents paramètres du problème
     MatriceAdjacence[0][0] = INT8_MAX;
-    MatriceAdjacence[0][1] = 100;
-    MatriceAdjacence[0][2] = 100;
-    MatriceAdjacence[0][3] = 100;
-    MatriceAdjacence[0][4] = 100;
+    MatriceAdjacence[0][1] = 200;
+    MatriceAdjacence[0][2] = 200;
+    MatriceAdjacence[0][3] = 200;
+    MatriceAdjacence[0][4] = 200;
+    MatriceAdjacence[0][5] = 200;
+    MatriceAdjacence[0][6] = 200;
+    MatriceAdjacence[0][7] = 200;
+    MatriceAdjacence[0][8] = 200;
+    MatriceAdjacence[0][9] = 200;
+    MatriceAdjacence[0][10] = 200;
 
-    MatriceAdjacence[1][0] = 100;
+    MatriceAdjacence[1][0] = 200;
     MatriceAdjacence[1][1] = INT8_MAX;
-    MatriceAdjacence[1][2] = 10;
+    MatriceAdjacence[1][2] = INT8_MAX;
     MatriceAdjacence[1][3] = INT8_MAX;
     MatriceAdjacence[1][4] = INT8_MAX;
+    MatriceAdjacence[1][5] = INT8_MAX;
+    MatriceAdjacence[1][6] = 20;
+    MatriceAdjacence[1][7] = 20;
+    MatriceAdjacence[1][8] = 20;
+    MatriceAdjacence[1][9] = INT8_MAX;
+    MatriceAdjacence[1][10] =INT8_MAX;
 
-    MatriceAdjacence[2][0] = 100;
-    MatriceAdjacence[2][1] = 10;
+    MatriceAdjacence[2][0] = 200;
+    MatriceAdjacence[2][1] = INT8_MAX;
     MatriceAdjacence[2][2] = INT8_MAX;
-    MatriceAdjacence[2][3] = 140;
+    MatriceAdjacence[2][3] = INT8_MAX;
     MatriceAdjacence[2][4] = INT8_MAX;
+    MatriceAdjacence[2][5] = INT8_MAX;
+    MatriceAdjacence[2][6] = INT8_MAX;
+    MatriceAdjacence[2][7] = 20;
+    MatriceAdjacence[2][8] = INT8_MAX;
+    MatriceAdjacence[2][9] = 20;
+    MatriceAdjacence[2][10] =INT8_MAX;
 
-    MatriceAdjacence[3][0] = 100;
+    MatriceAdjacence[3][0] = 200;
     MatriceAdjacence[3][1] = INT8_MAX;
-    MatriceAdjacence[3][2] = 140;
+    MatriceAdjacence[3][2] = INT8_MAX;
     MatriceAdjacence[3][3] = INT8_MAX;
-    MatriceAdjacence[3][4] = 10;
+    MatriceAdjacence[3][4] = INT8_MAX;
+    MatriceAdjacence[3][5] = INT8_MAX;
+    MatriceAdjacence[3][6] = INT8_MAX;
+    MatriceAdjacence[3][7] = INT8_MAX;
+    MatriceAdjacence[3][8] = INT8_MAX;
+    MatriceAdjacence[3][9] = 20;
+    MatriceAdjacence[3][10] =20;
 
-    MatriceAdjacence[4][0] = 100;
+    MatriceAdjacence[4][0] = 200;
     MatriceAdjacence[4][1] = INT8_MAX;
     MatriceAdjacence[4][2] = INT8_MAX;
-    MatriceAdjacence[4][3] = 10;
+    MatriceAdjacence[4][3] = INT8_MAX;
     MatriceAdjacence[4][4] = INT8_MAX;
+    MatriceAdjacence[4][5] = 20;
+    MatriceAdjacence[4][6] = INT8_MAX;
+    MatriceAdjacence[4][7] = INT8_MAX;
+    MatriceAdjacence[4][8] = INT8_MAX;
+    MatriceAdjacence[4][9] = INT8_MAX;
+    MatriceAdjacence[4][10] =20;
 
-    inventoryMax[0] = 5000;
-    inventoryMax[1] = 5000;
-    inventoryMax[2] = 3000;
-    inventoryMax[3] = 2000;
-    inventoryMax[4] = 4000;
+    MatriceAdjacence[5][0] = 200;
+    MatriceAdjacence[5][1] = INT8_MAX;
+    MatriceAdjacence[5][2] = INT8_MAX;
+    MatriceAdjacence[5][3] = INT8_MAX;
+    MatriceAdjacence[5][4] = 20;
+    MatriceAdjacence[5][5] = INT8_MAX;
+    MatriceAdjacence[5][6] = 20;
+    MatriceAdjacence[5][7] = INT8_MAX;
+    MatriceAdjacence[5][8] = 20;
+    MatriceAdjacence[5][9] = INT8_MAX;
+    MatriceAdjacence[5][10] =INT8_MAX;
 
-    increaseSpeed[0] = 5000;
-    increaseSpeed[1] = -1000;
-    increaseSpeed[2] = -1000;
-    increaseSpeed[3] = -2000;
-    increaseSpeed[4] = -1500;
+    MatriceAdjacence[6][0] = 200;
+    MatriceAdjacence[6][1] = 20;
+    MatriceAdjacence[6][2] = INT8_MAX;
+    MatriceAdjacence[6][3] = INT8_MAX;
+    MatriceAdjacence[6][4] = INT8_MAX;
+    MatriceAdjacence[6][5] = 20;
+    MatriceAdjacence[6][6] = INT8_MAX;
+    MatriceAdjacence[6][7] = INT8_MAX;
+    MatriceAdjacence[6][8] = 20;
+    MatriceAdjacence[6][9] = INT8_MAX;
+    MatriceAdjacence[6][10] = INT8_MAX;
+
+    MatriceAdjacence[7][0] = 200;
+    MatriceAdjacence[7][1] = 20;
+    MatriceAdjacence[7][2] = 20;
+    MatriceAdjacence[7][3] = INT8_MAX;
+    MatriceAdjacence[7][4] = INT8_MAX;
+    MatriceAdjacence[7][5] = INT8_MAX;
+    MatriceAdjacence[7][6] = INT8_MAX;
+    MatriceAdjacence[7][7] = INT8_MAX;
+    MatriceAdjacence[7][8] = 20;
+    MatriceAdjacence[7][9] = 20;
+    MatriceAdjacence[7][10] = INT8_MAX;
+
+    MatriceAdjacence[8][0] = 200;
+    MatriceAdjacence[8][1] = 20;
+    MatriceAdjacence[8][2] = INT8_MAX;
+    MatriceAdjacence[8][3] = INT8_MAX;
+    MatriceAdjacence[8][4] = INT8_MAX;
+    MatriceAdjacence[8][5] = 20;
+    MatriceAdjacence[8][6] = 20;
+    MatriceAdjacence[8][7] = 20;
+    MatriceAdjacence[8][8] = INT8_MAX;
+    MatriceAdjacence[8][9] = INT8_MAX;
+    MatriceAdjacence[8][10] =INT8_MAX;
+
+    MatriceAdjacence[9][0] = 200;
+    MatriceAdjacence[9][1] = INT8_MAX;
+    MatriceAdjacence[9][2] = 20;
+    MatriceAdjacence[9][3] = 20;
+    MatriceAdjacence[9][4] = INT8_MAX;
+    MatriceAdjacence[9][5] = INT8_MAX;
+    MatriceAdjacence[9][6] = INT8_MAX;
+    MatriceAdjacence[9][7] = 20;
+    MatriceAdjacence[9][8] = INT8_MAX;
+    MatriceAdjacence[9][9] = INT8_MAX;
+    MatriceAdjacence[9][10] =20;
+
+    MatriceAdjacence[10][0] = 200;
+    MatriceAdjacence[10][1] = INT8_MAX;
+    MatriceAdjacence[10][2] = INT8_MAX;
+    MatriceAdjacence[10][3] = 20;
+    MatriceAdjacence[10][4] = 20;
+    MatriceAdjacence[10][5] = INT8_MAX;
+    MatriceAdjacence[10][6] = INT8_MAX;
+    MatriceAdjacence[10][7] = INT8_MAX;
+    MatriceAdjacence[10][8] = INT8_MAX;
+    MatriceAdjacence[10][9] = 20;
+    MatriceAdjacence[10][10] =INT8_MAX;
+
+    inventoryMax[0] = 10000;
+    inventoryMax[1] = 1500;
+    inventoryMax[2] = 600;
+    inventoryMax[3] = 3000;
+    inventoryMax[4] = 4400;
+    inventoryMax[5] = 2600;
+    inventoryMax[6] = 3200;
+    inventoryMax[7] = 2000;
+    inventoryMax[8] = 4000;
+    inventoryMax[9] = 5000;
+    inventoryMax[10] = 2300;
+
+    increaseSpeed[0] = 10000;
+    increaseSpeed[1] = -500;
+    increaseSpeed[2] = -600;
+    increaseSpeed[3] = -800;
+    increaseSpeed[4] = -1300;
+    increaseSpeed[5] = -2000;
+    increaseSpeed[6] = -200;
+    increaseSpeed[7] = -2000;
+    increaseSpeed[8] = -500;
+    increaseSpeed[9] = -1000;
+    increaseSpeed[10] = -2300;
 
 
-    currentInventory[0] = 7000;
-    currentInventory[1] = 5000;
-    currentInventory[2] = 3000;
-    currentInventory[3] = 2000;
-    currentInventory[4] = 4000;
+    currentInventory[0] = 10000;
+    currentInventory[1] = 1500;
+    currentInventory[2] = 600;
+    currentInventory[3] = 3000;
+    currentInventory[4] = 4400;
+    currentInventory[5] = 2600;
+    currentInventory[6] = 3200;
+    currentInventory[7] = 2000;
+    currentInventory[8] = 4000;
+    currentInventory[9] = 5000;
+    currentInventory[10] = 2300;
 
 
 }
@@ -354,11 +474,11 @@ vector<path> Recursive_temps (vector<path> tabPath, int length, vector<path> pre
 }
 
 int main() {
-    int numberOfNodes = 5;
-    int numberOfTimeRunning = 5;
+    int numberOfNodes = 11;
+    int numberOfTimeRunning = 20;
 
 
-    int capacityVehicle = 5000;
+    int capacityVehicle = 10000;
     int ** matricePointeur = (int **)malloc(numberOfNodes*sizeof(int*));
     for (int i=0; i<numberOfNodes; i++){
         matricePointeur[i]= (int *)malloc(numberOfNodes*sizeof(int));

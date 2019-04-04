@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/lserazin/AppData/Local/gitkraken/app-5.0.2/Algo
+# Install script for directory: C:/Users/lserazin/Documents/Algo/Algo
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/lserazin/AppData/Local/gitkraken/app-5.0.2/Algo/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/lserazin/Documents/Algo/Algo/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
