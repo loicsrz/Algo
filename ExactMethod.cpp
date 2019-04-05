@@ -23,7 +23,7 @@ void PrintPath (path currentPath)
 }
 
 /// On vérifie que le stock passé en entrer est conforme, cad qu'il est supérieure à 0
-bool checkCondition( int SupplierInventoryStock, int capacityVehicle, int choice, vector<int> urgentNodes, path currentpath)
+bool checkCondition( int SupplierInventoryStock, int capacityVehicle, int choice, vector<int> urgentNodes, path currentpath, int * currentInventory, int * inventoryMax)
 {
     if (SupplierInventoryStock < 0)
     {
@@ -34,7 +34,7 @@ bool checkCondition( int SupplierInventoryStock, int capacityVehicle, int choice
         return false;
     }
 
-    if(choice == 2)
+    if(choice == 2 || choice == 4)
     {
         if(currentpath.visited_node.size() == 2)
         {
@@ -49,9 +49,17 @@ bool checkCondition( int SupplierInventoryStock, int capacityVehicle, int choice
         }
     }
 
-    if(choice == 3)
+    if(choice == 3 || choice == 4)
     {
-
+        int somme=0;
+        for (unsigned int i=0;i<urgentNodes.size();i++)
+        {
+            somme += inventoryMax[urgentNodes[i]] - currentInventory[urgentNodes[i]];
+        }
+        if(somme > SupplierInventoryStock)
+        {
+            return false;
+        }
     }
 
     return true;
@@ -103,7 +111,7 @@ vector<path> recursiveFunction (path currentPath, int **  matrice, int * invento
 {
     /// On récupère tous les voisins
     vector<int> neighbours = getNeighbours(currentPath, numberOfRetailer, matrice);
-
+    bool erase = false;
     vector<path> pathToGive;
 
     /// On itère pour tous les voisins du dernier noeud
@@ -118,11 +126,21 @@ vector<path> recursiveFunction (path currentPath, int **  matrice, int * invento
         path NewcurrentPath = currentPath;
         NewcurrentPath.visited_node.push_back(neighbours[i]);
 
+        if(find(urgentNodes.begin(),urgentNodes.end(),neighbours[i]) != urgentNodes.end())
+        {
+            urgentNodes.erase(find(urgentNodes.begin(),urgentNodes.end(),neighbours[i]));
+            erase = true;
+        }
+
         /// on met à jour l'entrepôt en fonction du nouveau noeud et on regarde si cela respecte les conditions
         int tempSupplier = SupplierInventoryStock - inventoryMax[neighbours[i]] + currentInventory[neighbours[i]];
-        bool isValid = checkCondition( tempSupplier, capacityVehicle, choice, urgentNodes, currentPath);
+        bool isValid = checkCondition( tempSupplier, capacityVehicle, choice, urgentNodes, currentPath, currentInventory, inventoryMax);
         if(!isValid)
         {
+            if(erase)
+            {
+                urgentNodes.push_back(neighbours[i]);
+            }
             continue;
         }
 
@@ -170,7 +188,6 @@ vector<path> recursiveFunction (path currentPath, int **  matrice, int * invento
     }
     if (currentPath.objectif_value != -1)
     {
-       // cout << "Inventory " << currentInventory[4] << endl;
         pathToGive.push_back(currentPath);
     }
 
@@ -353,33 +370,42 @@ void creerInitialCondition (int ** MatriceAdjacence, int * inventoryMax, int * i
 
 }
 
-vector<path> min_onjective(path currentPath, int **  matrice, int * inventoryMax, int * currentInventory, int numberOfRetailer, int * increaseSpeed, int capacityVehicle, int SupplierInventoryStock, int choice)
+vector<path> min_onjective(vector<path> pastPath, int **  matrice, int * inventoryMax, int * currentInventory, int numberOfRetailer, int * increaseSpeed, int capacityVehicle, int SupplierInventoryStock, int choice)
 {
     vector<int> urgentNodes;
-    /// Initialisation des paramètres en fonction du chemin précédent
-    for (unsigned int i=0;i<currentPath.visited_node.size();i++)
+    for (int i=0;i<numberOfRetailer;i++)
     {
-        SupplierInventoryStock -= inventoryMax[currentPath.visited_node[i]] - currentInventory[currentPath.visited_node[i]];
-        currentInventory[currentPath.visited_node[i]] = inventoryMax[currentPath.visited_node[i]];
+        currentInventory[i] = inventoryMax[i];
     }
-    for (int k=0;k<numberOfRetailer;k++)
+    /// Initialisation des paramètres en fonction du chemin précédent
+    for (unsigned int l=0;l<pastPath.size();l++)
     {
-        currentInventory[k] = currentInventory[k] + increaseSpeed[k];
-        if(currentInventory[k] + increaseSpeed[k] < 0)
+        for (unsigned int i=0;i<pastPath[l].visited_node.size();i++)
         {
-            urgentNodes.push_back(k);
+            SupplierInventoryStock -= inventoryMax[pastPath[l].visited_node[i]] - currentInventory[pastPath[l].visited_node[i]];
+            currentInventory[pastPath[l].visited_node[i]] = inventoryMax[pastPath[l].visited_node[i]];
+        }
+        for (int k=0;k<numberOfRetailer;k++)
+        {
+            currentInventory[k] = currentInventory[k] + increaseSpeed[k];
+        }
+        if(currentInventory[0] > inventoryMax[0])
+        {
+            currentInventory[0] = inventoryMax[0];
+        }
+        SupplierInventoryStock = currentInventory[0];
+    }
+    for(int i=0;i<numberOfRetailer;i++)
+    {
+        if(currentInventory[i] + increaseSpeed[i] < 0)
+        {
+            urgentNodes.push_back(i);
         }
     }
-    if(currentInventory[0] > inventoryMax[0])
-    {
-        currentInventory[0] = inventoryMax[0];
-    }
-    SupplierInventoryStock = currentInventory[0];
-
 
     /// Calcul des voisins du dernier noeud contenu dans le chemin
     vector<path> pathToGive;
-    vector<int> neighbours = getNeighbours(currentPath, numberOfRetailer, matrice);
+    vector<int> neighbours = getNeighbours(pastPath[pastPath.size()-1], numberOfRetailer, matrice);
 
     /// Pour chaque voisin
     for (unsigned int i=0; i< neighbours.size(); i++)
@@ -391,7 +417,7 @@ vector<path> min_onjective(path currentPath, int **  matrice, int * inventoryMax
 
         /// On regarde si le chemin pris respecte les conditions en entrées ( le stock de l'inventaire est suffisant)
         int tempSupplier = SupplierInventoryStock - inventoryMax[neighbours[i]] + currentInventory[neighbours[i]];
-        bool isValid = checkCondition(tempSupplier, capacityVehicle, choice, urgentNodes, currentPath);
+        bool isValid = checkCondition(tempSupplier, capacityVehicle, choice, urgentNodes, NewcurrentPath, currentInventory, inventoryMax);
         if(!isValid)
         {
             continue;
@@ -455,17 +481,17 @@ vector<path> Recursive_temps (vector<path> tabPath, int length, vector<path> pre
     vector<path> newTabPath;
     for (unsigned int i=0;i<tabPath.size();i++)
     {
-       newTabPath = min_onjective(tabPath[i], matricePointeur, inventoryMax, currentInventory, numberOfNodes, increaseSpeed, capacityVehicle, SupplierInventoryStock, choice);
-       newTabPath.size();
-       if(newTabPath.size() == 0)
-       {
-           continue;
-       }
-       precedence.push_back(tabPath[i]);
-       vector<path> tabPrecedentPath = Recursive_temps(newTabPath, length-1,precedence,matricePointeur, inventoryMax, currentInventory, numberOfNodes, increaseSpeed, capacityVehicle, SupplierInventoryStock, choice);
-       precedence.pop_back();
-       int min_tab_optimum = 0;
-       for (unsigned int k=0;k<tabPrecedentPath.size();k++)
+        precedence.push_back(tabPath[i]);
+        newTabPath = min_onjective(precedence, matricePointeur, inventoryMax, currentInventory, numberOfNodes, increaseSpeed, capacityVehicle, SupplierInventoryStock, choice);
+        newTabPath.size();
+        if(newTabPath.size() == 0)
+        {
+            continue;
+        }
+        vector<path> tabPrecedentPath = Recursive_temps(newTabPath, length-1,precedence,matricePointeur, inventoryMax, currentInventory, numberOfNodes, increaseSpeed, capacityVehicle, SupplierInventoryStock, choice);
+        precedence.pop_back();
+        int min_tab_optimum = 0;
+        for (unsigned int k=0;k<tabPrecedentPath.size();k++)
        {
            min_tab_optimum += tabPrecedentPath[k].objectif_value;
        }
@@ -503,6 +529,7 @@ int main() {
     cout << "1 : Sans heuristique" << endl;
     cout << "2 : Premiere Heuristique" << endl;
     cout << "3 : Deuxieme Heuristique" << endl;
+    cout << "4 : Les deux heuristiques" << endl;
     int choice;
     cin >> choice;
 

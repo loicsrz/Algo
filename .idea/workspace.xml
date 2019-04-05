@@ -25,8 +25,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ExactMethod.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="429" lean-forward="true" selection-start-line="429" selection-end-line="429" />
+            <state relative-caret-position="374">
+              <caret line="502" column="49" lean-forward="true" selection-start-line="502" selection-start-column="49" selection-end-line="502" selection-end-column="49" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -159,12 +159,12 @@
       <workItem from="1553691578765" duration="7709000" />
       <workItem from="1554244099327" duration="608000" />
       <workItem from="1554302609178" duration="4732000" />
-      <workItem from="1554390409354" duration="23241000" />
+      <workItem from="1554390409354" duration="32231000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="183245000" />
+    <option name="totallyTimeSpent" value="192235000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -184,7 +184,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32922733" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3393057" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -237,8 +237,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ExactMethod.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="429" lean-forward="true" selection-start-line="429" selection-end-line="429" />
+        <state relative-caret-position="374">
+          <caret line="502" column="49" lean-forward="true" selection-start-line="502" selection-start-column="49" selection-end-line="502" selection-end-column="49" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
