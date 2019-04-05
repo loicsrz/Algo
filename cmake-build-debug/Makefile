@@ -151,60 +151,6 @@ ExactMethod.cpp.s:
 	$(MAKE) -f CMakeFiles\untitled.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\untitled.dir\ExactMethod.cpp.s
 .PHONY : ExactMethod.cpp.s
 
-FirstHeuristic.obj: FirstHeuristic.cpp.obj
-
-.PHONY : FirstHeuristic.obj
-
-# target to build an object file
-FirstHeuristic.cpp.obj:
-	$(MAKE) -f CMakeFiles\untitled.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\untitled.dir\FirstHeuristic.cpp.obj
-.PHONY : FirstHeuristic.cpp.obj
-
-FirstHeuristic.i: FirstHeuristic.cpp.i
-
-.PHONY : FirstHeuristic.i
-
-# target to preprocess a source file
-FirstHeuristic.cpp.i:
-	$(MAKE) -f CMakeFiles\untitled.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\untitled.dir\FirstHeuristic.cpp.i
-.PHONY : FirstHeuristic.cpp.i
-
-FirstHeuristic.s: FirstHeuristic.cpp.s
-
-.PHONY : FirstHeuristic.s
-
-# target to generate assembly for a file
-FirstHeuristic.cpp.s:
-	$(MAKE) -f CMakeFiles\untitled.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\untitled.dir\FirstHeuristic.cpp.s
-.PHONY : FirstHeuristic.cpp.s
-
-SecondHeuristic.obj: SecondHeuristic.cpp.obj
-
-.PHONY : SecondHeuristic.obj
-
-# target to build an object file
-SecondHeuristic.cpp.obj:
-	$(MAKE) -f CMakeFiles\untitled.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\untitled.dir\SecondHeuristic.cpp.obj
-.PHONY : SecondHeuristic.cpp.obj
-
-SecondHeuristic.i: SecondHeuristic.cpp.i
-
-.PHONY : SecondHeuristic.i
-
-# target to preprocess a source file
-SecondHeuristic.cpp.i:
-	$(MAKE) -f CMakeFiles\untitled.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\untitled.dir\SecondHeuristic.cpp.i
-.PHONY : SecondHeuristic.cpp.i
-
-SecondHeuristic.s: SecondHeuristic.cpp.s
-
-.PHONY : SecondHeuristic.s
-
-# target to generate assembly for a file
-SecondHeuristic.cpp.s:
-	$(MAKE) -f CMakeFiles\untitled.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\untitled.dir\SecondHeuristic.cpp.s
-.PHONY : SecondHeuristic.cpp.s
-
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -217,12 +163,6 @@ help:
 	@echo ... ExactMethod.obj
 	@echo ... ExactMethod.i
 	@echo ... ExactMethod.s
-	@echo ... FirstHeuristic.obj
-	@echo ... FirstHeuristic.i
-	@echo ... FirstHeuristic.s
-	@echo ... SecondHeuristic.obj
-	@echo ... SecondHeuristic.i
-	@echo ... SecondHeuristic.s
 .PHONY : help
 
 

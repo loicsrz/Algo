@@ -77,59 +77,17 @@ CMakeFiles\untitled.dir\ExactMethod.cpp.s: cmake_force
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\untitled.dir\ExactMethod.cpp.s /c C:\Users\lserazin\Documents\Algo\Algo\ExactMethod.cpp
 <<
 
-CMakeFiles\untitled.dir\FirstHeuristic.cpp.obj: CMakeFiles\untitled.dir\flags.make
-CMakeFiles\untitled.dir\FirstHeuristic.cpp.obj: ..\FirstHeuristic.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\lserazin\Documents\Algo\Algo\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/untitled.dir/FirstHeuristic.cpp.obj"
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\untitled.dir\FirstHeuristic.cpp.obj /FdCMakeFiles\untitled.dir\ /FS -c C:\Users\lserazin\Documents\Algo\Algo\FirstHeuristic.cpp
-<<
-
-CMakeFiles\untitled.dir\FirstHeuristic.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/untitled.dir/FirstHeuristic.cpp.i"
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe > CMakeFiles\untitled.dir\FirstHeuristic.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\lserazin\Documents\Algo\Algo\FirstHeuristic.cpp
-<<
-
-CMakeFiles\untitled.dir\FirstHeuristic.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled.dir/FirstHeuristic.cpp.s"
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\untitled.dir\FirstHeuristic.cpp.s /c C:\Users\lserazin\Documents\Algo\Algo\FirstHeuristic.cpp
-<<
-
-CMakeFiles\untitled.dir\SecondHeuristic.cpp.obj: CMakeFiles\untitled.dir\flags.make
-CMakeFiles\untitled.dir\SecondHeuristic.cpp.obj: ..\SecondHeuristic.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\lserazin\Documents\Algo\Algo\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/untitled.dir/SecondHeuristic.cpp.obj"
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\untitled.dir\SecondHeuristic.cpp.obj /FdCMakeFiles\untitled.dir\ /FS -c C:\Users\lserazin\Documents\Algo\Algo\SecondHeuristic.cpp
-<<
-
-CMakeFiles\untitled.dir\SecondHeuristic.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/untitled.dir/SecondHeuristic.cpp.i"
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe > CMakeFiles\untitled.dir\SecondHeuristic.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\lserazin\Documents\Algo\Algo\SecondHeuristic.cpp
-<<
-
-CMakeFiles\untitled.dir\SecondHeuristic.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/untitled.dir/SecondHeuristic.cpp.s"
-	C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\untitled.dir\SecondHeuristic.cpp.s /c C:\Users\lserazin\Documents\Algo\Algo\SecondHeuristic.cpp
-<<
-
 # Object files for target untitled
 untitled_OBJECTS = \
-"CMakeFiles\untitled.dir\ExactMethod.cpp.obj" \
-"CMakeFiles\untitled.dir\FirstHeuristic.cpp.obj" \
-"CMakeFiles\untitled.dir\SecondHeuristic.cpp.obj"
+"CMakeFiles\untitled.dir\ExactMethod.cpp.obj"
 
 # External object files for target untitled
 untitled_EXTERNAL_OBJECTS =
 
 untitled.exe: CMakeFiles\untitled.dir\ExactMethod.cpp.obj
-untitled.exe: CMakeFiles\untitled.dir\FirstHeuristic.cpp.obj
-untitled.exe: CMakeFiles\untitled.dir\SecondHeuristic.cpp.obj
 untitled.exe: CMakeFiles\untitled.dir\build.make
 untitled.exe: CMakeFiles\untitled.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\lserazin\Documents\Algo\Algo\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable untitled.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\lserazin\Documents\Algo\Algo\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable untitled.exe"
 	C:\Users\lserazin\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\183.5429.37\bin\cmake\win\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\untitled.dir --manifests  -- C:\PROGRA~2\MICROS~2\2017\COMMUN~1\VC\Tools\MSVC\1416~1.270\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\untitled.dir\objects1.rsp @<<
  /out:untitled.exe /implib:untitled.lib /pdb:C:\Users\lserazin\Documents\Algo\Algo\cmake-build-debug\untitled.pdb /version:0.0  /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
 <<

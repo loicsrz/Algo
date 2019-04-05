@@ -25,25 +25,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ExactMethod.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="397" column="69" selection-start-line="397" selection-start-column="69" selection-end-line="397" selection-end-column="69" />
+            <state relative-caret-position="51">
+              <caret line="429" lean-forward="true" selection-start-line="429" selection-end-line="429" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FirstHeuristic.cpp">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/SecondHeuristic.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
             </state>
           </provider>
         </entry>
@@ -93,8 +79,8 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-435" />
-    <option name="y" value="-8" />
+    <option name="x" value="59" />
+    <option name="y" value="-21" />
     <option name="width" value="1400" />
     <option name="height" value="970" />
   </component>
@@ -173,12 +159,12 @@
       <workItem from="1553691578765" duration="7709000" />
       <workItem from="1554244099327" duration="608000" />
       <workItem from="1554302609178" duration="4732000" />
-      <workItem from="1554390409354" duration="9508000" />
+      <workItem from="1554390409354" duration="23241000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="169512000" />
+    <option name="totallyTimeSpent" value="183245000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -191,6 +177,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13202934" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -239,12 +226,19 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FirstHeuristic.cpp">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8789">
+          <caret line="517" selection-start-line="517" selection-end-line="517" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ExactMethod.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="397" column="69" selection-start-line="397" selection-start-column="69" selection-end-line="397" selection-end-column="69" />
+        <state relative-caret-position="51">
+          <caret line="429" lean-forward="true" selection-start-line="429" selection-end-line="429" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>

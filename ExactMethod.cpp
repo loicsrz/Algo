@@ -23,7 +23,7 @@ void PrintPath (path currentPath)
 }
 
 /// On vérifie que le stock passé en entrer est conforme, cad qu'il est supérieure à 0
-bool checkCondition( int SupplierInventoryStock, int capacityVehicle)
+bool checkCondition( int SupplierInventoryStock, int capacityVehicle, int choice, vector<int> urgentNodes, path currentpath)
 {
     if (SupplierInventoryStock < 0)
     {
@@ -33,6 +33,27 @@ bool checkCondition( int SupplierInventoryStock, int capacityVehicle)
     {
         return false;
     }
+
+    if(choice == 2)
+    {
+        if(currentpath.visited_node.size() == 2)
+        {
+            for (unsigned int i=0;i<urgentNodes.size();i++)
+            {
+                if(urgentNodes[i] == currentpath.visited_node[currentpath.visited_node.size()-1])
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+
+    if(choice == 3)
+    {
+
+    }
+
     return true;
 
 }
@@ -78,7 +99,7 @@ void objective_function (path *current, int * currentInventory, int number_retai
 
 }
 /// Fonction récursive permettant de récupérer l'ensemble des chenins possibles
-vector<path> recursiveFunction (path currentPath, int **  matrice, int * inventoryMax, int * currentInventory, int numberOfRetailer, int * increaseSpeed, int capacityVehicle, int SupplierInventoryStock)
+vector<path> recursiveFunction (path currentPath, int **  matrice, int * inventoryMax, int * currentInventory, int numberOfRetailer, int * increaseSpeed, int capacityVehicle, int SupplierInventoryStock ,int choice, vector<int> urgentNodes)
 {
     /// On récupère tous les voisins
     vector<int> neighbours = getNeighbours(currentPath, numberOfRetailer, matrice);
@@ -99,7 +120,7 @@ vector<path> recursiveFunction (path currentPath, int **  matrice, int * invento
 
         /// on met à jour l'entrepôt en fonction du nouveau noeud et on regarde si cela respecte les conditions
         int tempSupplier = SupplierInventoryStock - inventoryMax[neighbours[i]] + currentInventory[neighbours[i]];
-        bool isValid = checkCondition( tempSupplier, capacityVehicle);
+        bool isValid = checkCondition( tempSupplier, capacityVehicle, choice, urgentNodes, currentPath);
         if(!isValid)
         {
             continue;
@@ -108,7 +129,7 @@ vector<path> recursiveFunction (path currentPath, int **  matrice, int * invento
         /// On va récupérer de maniére récursive les paths fils
         objective_function(&NewcurrentPath, currentInventory, numberOfRetailer, matrice, tempSupplier, inventoryMax);
         vector <path> NewTabPath;
-        NewTabPath = recursiveFunction(NewcurrentPath, matrice, inventoryMax, currentInventory, numberOfRetailer, increaseSpeed, capacityVehicle, tempSupplier);
+        NewTabPath = recursiveFunction(NewcurrentPath, matrice, inventoryMax, currentInventory, numberOfRetailer, increaseSpeed, capacityVehicle, tempSupplier, choice, urgentNodes);
 
         /// Une fois les paths récupérés, on vérifie qu'il vérifie les conditions
         for (unsigned int k=0;k< NewTabPath.size();k++)
@@ -149,6 +170,7 @@ vector<path> recursiveFunction (path currentPath, int **  matrice, int * invento
     }
     if (currentPath.objectif_value != -1)
     {
+       // cout << "Inventory " << currentInventory[4] << endl;
         pathToGive.push_back(currentPath);
     }
 
@@ -331,8 +353,9 @@ void creerInitialCondition (int ** MatriceAdjacence, int * inventoryMax, int * i
 
 }
 
-vector<path> min_onjective(path currentPath, int **  matrice, int * inventoryMax, int * currentInventory, int numberOfRetailer, int * increaseSpeed, int capacityVehicle, int SupplierInventoryStock)
+vector<path> min_onjective(path currentPath, int **  matrice, int * inventoryMax, int * currentInventory, int numberOfRetailer, int * increaseSpeed, int capacityVehicle, int SupplierInventoryStock, int choice)
 {
+    vector<int> urgentNodes;
     /// Initialisation des paramètres en fonction du chemin précédent
     for (unsigned int i=0;i<currentPath.visited_node.size();i++)
     {
@@ -342,6 +365,10 @@ vector<path> min_onjective(path currentPath, int **  matrice, int * inventoryMax
     for (int k=0;k<numberOfRetailer;k++)
     {
         currentInventory[k] = currentInventory[k] + increaseSpeed[k];
+        if(currentInventory[k] + increaseSpeed[k] < 0)
+        {
+            urgentNodes.push_back(k);
+        }
     }
     if(currentInventory[0] > inventoryMax[0])
     {
@@ -364,7 +391,7 @@ vector<path> min_onjective(path currentPath, int **  matrice, int * inventoryMax
 
         /// On regarde si le chemin pris respecte les conditions en entrées ( le stock de l'inventaire est suffisant)
         int tempSupplier = SupplierInventoryStock - inventoryMax[neighbours[i]] + currentInventory[neighbours[i]];
-        bool isValid = checkCondition(tempSupplier, capacityVehicle);
+        bool isValid = checkCondition(tempSupplier, capacityVehicle, choice, urgentNodes, currentPath);
         if(!isValid)
         {
             continue;
@@ -373,7 +400,7 @@ vector<path> min_onjective(path currentPath, int **  matrice, int * inventoryMax
         /// On va chercher récursivement tous les fils de ce chemin et on remonte tous ceux qui sont corrects
         objective_function(&NewcurrentPath, currentInventory, numberOfRetailer, matrice, tempSupplier, inventoryMax);
         vector <path> NewTabPath;
-        NewTabPath = recursiveFunction(NewcurrentPath, matrice, inventoryMax, currentInventory, numberOfRetailer, increaseSpeed, capacityVehicle, tempSupplier);
+        NewTabPath = recursiveFunction(NewcurrentPath, matrice, inventoryMax, currentInventory, numberOfRetailer, increaseSpeed, capacityVehicle, tempSupplier, choice, urgentNodes);
 
         /// On regarde que le chemin une fois calculé respecte les conditions finales
         for (unsigned int k=0;k< NewTabPath.size();k++)
@@ -395,17 +422,15 @@ vector<path> min_onjective(path currentPath, int **  matrice, int * inventoryMax
             /// On ajoute le chemin dans la liste des chemins valides s'il respecte toutes les conditions
             if (NewTabPath[k].objectif_value != -1)
             {
-                cout << "Valeur de 4" << currentInventory[4] << endl;
                 pathToGive.push_back(NewTabPath[k]);
             }
         }
     }
-
     return pathToGive;
 
 }
 /// Fonction récursive qui permet de récupérer l'ensemble des chemins de chaque temps
-vector<path> Recursive_temps (vector<path> tabPath, int length, vector<path> precedence, int ** matricePointeur, int * inventoryMax, int * currentInventory, int numberOfNodes, int * increaseSpeed,  int capacityVehicle, int SupplierInventoryStock)
+vector<path> Recursive_temps (vector<path> tabPath, int length, vector<path> precedence, int ** matricePointeur, int * inventoryMax, int * currentInventory, int numberOfNodes, int * increaseSpeed,  int capacityVehicle, int SupplierInventoryStock, int choice)
 {
     vector<path> minTabPath;
     int minTabPathObjective =INT32_MAX;
@@ -430,26 +455,30 @@ vector<path> Recursive_temps (vector<path> tabPath, int length, vector<path> pre
     vector<path> newTabPath;
     for (unsigned int i=0;i<tabPath.size();i++)
     {
-       newTabPath = min_onjective(tabPath[i], matricePointeur, inventoryMax, currentInventory, numberOfNodes, increaseSpeed, capacityVehicle, SupplierInventoryStock);
+       newTabPath = min_onjective(tabPath[i], matricePointeur, inventoryMax, currentInventory, numberOfNodes, increaseSpeed, capacityVehicle, SupplierInventoryStock, choice);
        newTabPath.size();
        if(newTabPath.size() == 0)
        {
            continue;
        }
        precedence.push_back(tabPath[i]);
-       vector<path> tabPrecedentPath = Recursive_temps(newTabPath, length-1,precedence,matricePointeur, inventoryMax, currentInventory, numberOfNodes, increaseSpeed, capacityVehicle, SupplierInventoryStock);
+       vector<path> tabPrecedentPath = Recursive_temps(newTabPath, length-1,precedence,matricePointeur, inventoryMax, currentInventory, numberOfNodes, increaseSpeed, capacityVehicle, SupplierInventoryStock, choice);
        precedence.pop_back();
        int min_tab_optimum = 0;
        for (unsigned int k=0;k<tabPrecedentPath.size();k++)
        {
            min_tab_optimum += tabPrecedentPath[k].objectif_value;
        }
+     //  cout << "En cours de calcul :" << min_tab_optimum << endl;
        if (min_tab_optimum < minTabPathObjective && min_tab_optimum !=0)
        {
            minTabPath.clear();
+//           cout<<"NOUVEAU"<< endl;
+//           cout << currentInventory[4] << endl;
            for(unsigned int j=0;j<tabPrecedentPath.size();j++)
            {
                 minTabPath.push_back(tabPrecedentPath[j]);
+               // PrintPath(tabPrecedentPath[j]);
            }
            minTabPathObjective = min_tab_optimum;
        }
@@ -470,6 +499,12 @@ int main() {
         cout << "Veuillez rentrez un nombre positif :" << endl;
         cin >> numberOfTimeRunning;
     }
+    cout << "Veuillez choisir le type d'algorithme que vous souhaitez lancer : " << endl;
+    cout << "1 : Sans heuristique" << endl;
+    cout << "2 : Premiere Heuristique" << endl;
+    cout << "3 : Deuxieme Heuristique" << endl;
+    int choice;
+    cin >> choice;
 
     /// On initialise le chrono
     clock_t time = clock();
@@ -494,7 +529,7 @@ int main() {
     currentPath.push_back(beginPath);
 
     /// On affiche le résultat
-    currentPath = Recursive_temps(currentPath,numberOfTimeRunning,precedence, matricePointeur, inventoryMax, currentInventory, numberOfNodes, increaseSpeed, capacityVehicle, currentInventory[0]);
+    currentPath = Recursive_temps(currentPath,numberOfTimeRunning,precedence, matricePointeur, inventoryMax, currentInventory, numberOfNodes, increaseSpeed, capacityVehicle, currentInventory[0], choice);
     for (unsigned int i=0;i<currentPath.size();i++)
     {
         cout << "Chemin au temps t=" << i << endl;

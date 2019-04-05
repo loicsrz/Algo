@@ -3,7 +3,3 @@
 
 CMakeFiles\untitled.dir\ExactMethod.cpp.obj: ..\ExactMethod.cpp
 
-CMakeFiles\untitled.dir\FirstHeuristic.cpp.obj: ..\FirstHeuristic.cpp
-
-CMakeFiles\untitled.dir\SecondHeuristic.cpp.obj: ..\SecondHeuristic.cpp
-

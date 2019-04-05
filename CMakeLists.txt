@@ -3,4 +3,4 @@ project(untitled)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(untitled ExactMethod.cpp FirstHeuristic.cpp SecondHeuristic.cpp)
+add_executable(untitled ExactMethod.cpp)

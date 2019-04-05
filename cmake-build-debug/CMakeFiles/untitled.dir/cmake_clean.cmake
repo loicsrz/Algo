@@ -1,7 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/untitled.dir/ExactMethod.cpp.obj"
-  "CMakeFiles/untitled.dir/FirstHeuristic.cpp.obj"
-  "CMakeFiles/untitled.dir/SecondHeuristic.cpp.obj"
   "untitled.pdb"
   "untitled.exe"
   "untitled.exe.manifest"
