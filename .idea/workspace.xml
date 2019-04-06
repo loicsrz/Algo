@@ -25,8 +25,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ExactMethod.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="502" column="49" lean-forward="true" selection-start-line="502" selection-start-column="49" selection-end-line="502" selection-end-column="49" />
+            <state relative-caret-position="1179">
+              <caret line="464" column="78" selection-start-line="464" selection-start-column="78" selection-end-line="464" selection-end-column="78" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -61,6 +61,14 @@
     <findStrings>
       <find>shipments</find>
       <find>increaseSpeed</find>
+      <find>currentInventory</find>
+      <find>0 2 7 6</find>
+      <find>0 2 7 8 5 4 10</find>
+      <find>0 2 7 8 6 5 4 10 0</find>
+      <find>objective_function</find>
+      <find>25700</find>
+      <find>0 2 7 8 5 4 10 0</find>
+      <find>checkCondition</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -89,6 +97,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -100,7 +109,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -159,12 +167,13 @@
       <workItem from="1553691578765" duration="7709000" />
       <workItem from="1554244099327" duration="608000" />
       <workItem from="1554302609178" duration="4732000" />
-      <workItem from="1554390409354" duration="32231000" />
+      <workItem from="1554390409354" duration="32336000" />
+      <workItem from="1554486823135" duration="28705000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="192235000" />
+    <option name="totallyTimeSpent" value="221045000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -179,12 +188,12 @@
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13202934" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13325183" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3393057" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36842105" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -205,9 +214,9 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/SecondHeuristic.h" />
+    <entry file="file://$PROJECT_DIR$/SecondHeuristic.cpp" />
+    <entry file="file://$PROJECT_DIR$/FirstHeuristic.cpp" />
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -215,30 +224,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SecondHeuristic.h">
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SecondHeuristic.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FirstHeuristic.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8789">
-          <caret line="517" selection-start-line="517" selection-end-line="517" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ExactMethod.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="502" column="49" lean-forward="true" selection-start-line="502" selection-start-column="49" selection-end-line="502" selection-end-column="49" />
+        <state relative-caret-position="1179">
+          <caret line="464" column="78" selection-start-line="464" selection-start-column="78" selection-end-line="464" selection-end-column="78" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
